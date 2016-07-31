@@ -21,15 +21,14 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket) {
-    console.log('on');
+    console.log('on connection');
 
     socket.on('chat message', function(msg) {
+        console.log(msg);
         io.emit('chat message', msg);
     });
 });
 
-port = process.env.PORT || 3000;
-
-http.listen(port, function() {
+http.listen(8080, function() {
     console.log('listening on ' + port);
 });
