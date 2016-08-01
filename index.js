@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express');
+var app     = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http, {
     path: '/socket/socket.io'
@@ -15,7 +16,7 @@ app.all('/*', function(req, res, next) {
     next();
 });
 
-app.get('/', function(req, res) {
+app.get('/*', function(req, res) {
     console.log('get');
     res.sendFile(__dirname + '/index.html');
 });
